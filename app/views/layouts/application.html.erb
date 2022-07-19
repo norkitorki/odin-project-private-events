@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% if flash.any? %>
+      <div class="flash-messages">
+        <% flash.each do |type, msg| %>
+          <% if %w[ alert notice ].include?(type) %>
+            <p class="<%= type %>"><%= msg %></p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
