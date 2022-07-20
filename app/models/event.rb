@@ -5,10 +5,15 @@ class Event < ApplicationRecord
 
   validate :check_date_validity
 
-  belongs_to :host, class_name: 'User', foreign_key: :user_id
+  belongs_to :host,
+    class_name: 'User',
+    foreign_key: :user_id
 
   has_many :event_visitors
-  has_many :attendees, through: :event_visitors, source: :user, dependent: :destroy
+  has_many :attendees,
+    through: :event_visitors,
+    source: :user,
+    dependent: :destroy
 
   private
 
