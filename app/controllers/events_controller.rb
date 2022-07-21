@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: :update
+  before_action :set_event, only: %i[ update add_attendee ]
+
   def index
     @events = Event.all
   end
