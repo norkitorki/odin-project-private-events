@@ -1,0 +1,23 @@
+<%= form_with model: event do |f| %>
+  <%= render "devise/shared/error_messages", resource: event %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <em> (100 characters maximum)</em></br >
+    <%= f.text_field :name, maxLength: 100 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %></br >
+    <%= f.datetime_local_field :date, min: Date.today %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %></br >
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
