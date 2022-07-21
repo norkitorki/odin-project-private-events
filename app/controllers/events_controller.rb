@@ -18,4 +18,19 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :date, :location, :user_id)
   end
+
+  def add_attendee
+    user_id = params[:event][:user_id].to_i
+    if @event.attendees.none? { |a| a.id == user_id }
+      @event.attendees << User.find(user_id)
+      redirect_to root_path, notice: 'You successfully entered an event.'
+    else
+      redirect_to root_path, notice: 'You already entered this event.'
+    end
+  end
+
+  def remove_attendee
+    @event.attendees.delete(params[:event][:user_id].to_i)
+    redirect_to root_path, notice: 'You left an event.'
+  end
 end
