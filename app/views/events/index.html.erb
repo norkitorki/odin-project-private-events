@@ -1,11 +1,26 @@
 <h1>Events</h1>
 
+<% if user_signed_in? %>
+  <%= link_to 'Create Event', new_event_path %>
+<% end %>
+
 <div class="events-container">
   <% @events.each do |event| %>
     <div class="event">
-      <p><%= event.name %><p>
-      <p><%= event.date %></p>
+      <p><%= event.name %> by <%= event.host.username %><p>
+      <p><%= event.date.localtime.strftime('%B %d %Y at %H:%M %p') %></p>
       <p><%= event.location %></p>
+      <p>Attendees: <%= event.attendees.size %></p>
+
+      <% if user_signed_in? && current_user != event.host %>
+        <%= form_with model: event do |f| %>
+          <%= f.submit (event.attendees.include?(current_user) ? 'Leave' : 'Attend') %>
+        <% end %>
+      <% end %>
+
+      <% if user_signed_in? && current_user == event.host %>
+        <%= link_to 'Delete', event, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   <% end %>
 </div>
