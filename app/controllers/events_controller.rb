@@ -34,7 +34,7 @@ class EventsController < ApplicationController
       redirect_to root_path, notice: 'Event has been successfully updated.'
     else
       flash.now[:alert] = 'Event has not been updated.'
-      render root_path, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
