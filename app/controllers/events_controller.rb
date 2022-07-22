@@ -27,8 +27,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    return add_attendee if params[:commit] == 'Enter'
-    return remove_attendee if params[:commit] == 'Leave'
+    return add_or_remove_attendee(params[:commit]) if %w[ Attend Leave ].any?(params[:commit])
 
     if @event.update(event_params)
       redirect_to root_path, notice: 'Event has been successfully updated.'
@@ -53,22 +52,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def event_params
-    params.require(:event).permit(:name, :date, :location, :user_id)
-  end
-
-  def add_attendee
-    user_id = params[:event][:user_id].to_i
-    if @event.attendees.none? { |a| a.id == user_id }
-      @event.attendees << User.find(user_id)
-      redirect_to root_path, notice: 'You successfully entered an event.'
+  def add_or_remove_attendee(action)
+    if action == 'Attend'
+      if !@event.attendees.include?(current_user)
+        @event.attendees << current_user
+        notice = 'You successfully entered an event.'
+      else
+        notice = 'You already entered this event.'
+      end
     else
-      redirect_to root_path, notice: 'You already entered this event.'
+      @event.attendees.delete(current_user.id)
+      notice = 'You left an event.'
     end
-  end
-
-  def remove_attendee
-    @event.attendees.delete(params[:event][:user_id].to_i)
-    redirect_to root_path, notice: 'You left an event.'
+    redirect_to root_path, notice: notice
   end
 end
