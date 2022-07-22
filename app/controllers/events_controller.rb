@@ -6,6 +6,26 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def new
+    @event = Event.new
+  end
+
+  def create
+    @event = current_user.events.new(event_params)
+    if @event.save
+      redirect_to @event, notice: 'Event has been successfully created.'
+    else
+      flash.now[:alert] = 'Event has not been created.'
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def update
     return add_attendee if params[:commit] == 'Enter'
     return remove_attendee if params[:commit] == 'Leave'
@@ -16,6 +36,11 @@ class EventsController < ApplicationController
       flash.now[:alert] = 'Event has not been updated.'
       render root_path, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to root_path, alert: 'Event has been destroyed.'
   end
 
   private
