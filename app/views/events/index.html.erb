@@ -8,7 +8,7 @@
   <% @events.each do |event| %>
     <div class="event">
       <p><%= link_to event.name, event %> by <%= event.host.username %><p>
-      <p><%= event.date.localtime.strftime('%B %d %Y at %H:%M %p') %></p>
+      <p><%= event.date.strftime('%B %d %Y at %H:%M %p') %></p>
       <p><%= event.location %></p>
       <p>Attendees: <%= event.attendees.size %></p>
 
