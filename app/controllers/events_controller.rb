@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    return add_or_remove_attendee(params[:commit]) if %w[ Attend Leave ].any?(params[:commit])
+    return add_or_remove_attendee(params[:commit]) if %w[ Register Unregister ].any?(params[:commit])
 
     if @event.update(event_params)
       redirect_to root_path, notice: 'Event has been successfully updated.'
@@ -53,17 +53,17 @@ class EventsController < ApplicationController
   end
 
   def add_or_remove_attendee(action)
-    if action == 'Attend'
+    if action == 'Register'
       if !@event.attendees.include?(current_user)
         @event.attendees << current_user
-        notice = 'You successfully entered an event.'
+        notice = 'You successfully registered for an event.'
       else
-        notice = 'You already entered this event.'
+        notice = 'You are already registered for this event.'
       end
     else
       @event.attendees.delete(current_user.id)
-      notice = 'You left an event.'
+      notice = 'You successfully unregistered from an event.'
     end
-    redirect_to root_path, notice: notice
+    redirect_to @event, notice: notice
   end
 end
