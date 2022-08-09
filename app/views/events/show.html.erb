@@ -1,0 +1,65 @@
+<%= image_tag 'https://source.unsplash.com/random/600x300?v=1', class: 'event-listing-bg-img', width: '100%' %>
+
+<div class="event-listing flex column align-self-center">
+  <div class="flex">
+    <%= image_tag 'https://source.unsplash.com/random/600x300?v=1', size: '600x300' %>
+
+    <div class="pad-10 flex column gap-10 justify-between">
+      <p><%= @event.date.strftime('%d %b') %></p>
+
+      <div class="flex column gap-10">
+        <h1 class="bold"><%= @event.name %></h1>
+
+        <p>hosted by <%= link_to @event.host.username, user_show_path(@event.host) %></p>
+      </div>
+
+      <div class="flex column gap-5">
+        <p><%= @event.attendees.size %> Participants</p>
+        <% if user_signed_in? && current_user != @event.host %>
+          <%= form_with model: @event, class: 'event-registration' do |f| %>
+            <%= f.submit (@event.attendees.include?(current_user) ? 'Unregister' : 'Register') %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if @event.attendees.any? %>
+    <div class="event-attendees flex gap-10 align-center">
+
+      <% @event.attendees.limit(5).each do |attendee| %>
+        <%= link_to(user_show_path(attendee), class: 'align-self-start') do %>
+          <%= image_tag "https://source.unsplash.com/random/30x30?v=#{attendee.id}", size: '30x30', style: 'border-radius: 50%;' %>
+        <% end %>
+      <% end %>
+
+      <p>
+        <% if @event.attendees.size > 5 %>
+          +<%= @event.attendees.size - 5 %> more
+        <% end %>
+        are attending this event.
+      </p>
+    </div>
+  <% end %>
+
+  <div class="flex pad-10">
+    <p class="event-description">
+
+    </p>
+
+    <div class="flex column justify-evenly gap-20">
+      <div class="flex column gap-10">
+        <div>
+
+          <h3 class="bold">Date</h3>
+        </div>
+        <p><%= @event.date.ctime %> CEST</p>
+      </div>
+
+      <div class="flex column gap-10">
+        <h3 class="bold">Location</h3>
+        <p><%= @event.location %></p>
+      </div>
+    </div>
+  </div>
+</div>
