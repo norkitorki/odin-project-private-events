@@ -5,7 +5,7 @@
     <%= image_tag 'https://source.unsplash.com/random/600x300?v=1', size: '600x300' %>
 
     <div class="pad-10 flex column gap-10 justify-between">
-      <p><%= @event.date.strftime('%d %b') %></p>
+      <p><%= @event.start_date.strftime('%d %b') %></p>
 
       <div class="flex column gap-10">
         <h1 class="bold"><%= @event.name %></h1>
@@ -53,7 +53,7 @@
 
           <h3 class="bold">Date</h3>
         </div>
-        <p><%= @event.date.ctime %> CEST</p>
+        <p><%= @event.start_date.ctime %> CEST -<br> <%= @event.end_date.ctime %> CEST</p>
       </div>
 
       <div class="flex column gap-10">
