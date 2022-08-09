@@ -1,0 +1,73 @@
+/* misc Rules */
+
+.bold { font-weight: bold; }
+
+.pad-10 { padding: 10px; }
+
+/* Flexbox Rules */
+
+.flex { display: flex; }
+
+.flex.column { flex-direction: column; }
+
+.flex.justify-between { justify-content: space-between; }
+
+.flex.justify-evenly { justify-content: space-evenly; }
+
+.flex.justify-end { justify-content: flex-end; }
+
+.flex.align-center { align-items: center; }
+
+.justify-self-end { justify-self: flex-end; }
+
+.align-self-start { align-self: flex-start; }
+
+.align-self-center { align-self: center; }
+
+.align-self-end { align-self: flex-end; }
+
+.flex.gap-5 { gap: 5px; }
+
+.flex.gap-10 { gap: 10px; }
+
+.flex.gap-20 { gap: 20px; }
+
+/* events/show.html.erb */
+
+.event-listing-bg-img {
+  position: absolute;
+  top: 20px;
+  z-index: -1;
+  filter: blur(45px);
+}
+
+.event-listing {
+  width: 55%;
+  background-color: #ffffff;
+  border: 2px solid #2e2d2d;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.event-attendees {
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+
+.event-registration input[type="submit"] {
+  color: #ffffff;
+  font-size: 20px;
+  background-color: #0e740e;
+  padding: 5px 40px 5px 40px;
+  border: none;
+  border-radius: 4px;
+}
+
+.event-registration input[type="submit"]:hover {
+  background-color: #0d810d;
+  cursor: pointer;
+}
+
+.event-description { width: 75%; }
