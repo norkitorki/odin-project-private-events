@@ -7,7 +7,7 @@
 <div class="events-container flex gap-10">
   <% @events.each do |event| %>
     <div class="event">
-      <p><%= link_to event.name, event %> by <%= event.host.username %><p>
+      <p><%= link_to event.name, event %> by <%= link_to event.host.username, user_show_path(event.host) %><p>
       <p><%= event.date.strftime('%B %d %Y at %H:%M %p') %></p>
       <p><%= event.location %></p>
       <p>Attendees: <%= event.attendees.size %></p>
