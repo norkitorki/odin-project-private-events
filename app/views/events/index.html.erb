@@ -6,22 +6,6 @@
 
 <div class="events-container flex gap-10">
   <% @events.each do |event| %>
-    <div class="event">
-      <p><%= link_to event.name, event %> by <%= link_to event.host.username, user_show_path(event.host) %><p>
-      <p><%= event.date.strftime('%B %d %Y at %H:%M %p') %></p>
-      <p><%= event.location %></p>
-      <p>Attendees: <%= event.attendees.size %></p>
-
-      <% if user_signed_in? && current_user != event.host %>
-        <%= form_with model: event do |f| %>
-          <%= f.submit (event.attendees.include?(current_user) ? 'Leave' : 'Attend') %>
-        <% end %>
-      <% end %>
-
-      <% if user_signed_in? && current_user == event.host %>
-        <%= link_to 'Edit', edit_event_path(event) %>
-        <%= link_to 'Delete', event, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
+    <%= render 'event', event: event %>
   <% end %>
 </div>
