@@ -27,7 +27,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    return add_or_remove_attendee(params[:commit]) if %w[ Register Unregister ].any?(params[:commit])
+    commit = params[:commit]
+    return add_or_remove_attendee(commit) if %w[ Register Unregister ].any?(commit)
 
     if @event.update(event_params)
       redirect_to root_path, notice: 'Event has been successfully updated.'
