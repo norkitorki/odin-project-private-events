@@ -4,7 +4,7 @@
   <%= link_to 'Create Event', new_event_path %>
 <% end %>
 
-<div class="events-container">
+<div class="events-container flex gap-10">
   <% @events.each do |event| %>
     <div class="event">
       <p><%= link_to event.name, event %> by <%= event.host.username %><p>
