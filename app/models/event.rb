@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, :location, :start_date, :end_date, presence: true
 
-  validate :check_date_validity
+  validate :validate_event_dates
 
   belongs_to :host,
     class_name: 'User',
@@ -16,7 +16,13 @@ class Event < ApplicationRecord
 
   private
 
-  def check_date_validity
-    date && date < Time.zone.now ? errors.add(:date, "can't be in the past") : true
+  def validate_event_dates
+    if start_date && start_date < Time.zone.now
+      errors.add(:start_date, "can't be in the past")
+    end
+
+    if start_date && end_date && end_date <= start_date
+      errors.add(:end_date, "can't be before the starting date")
+    end
   end
 end
