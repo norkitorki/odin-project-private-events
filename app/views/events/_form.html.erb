@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label :start_date %>
-    <%= f.datetime_field :start_date, min: Date.today - 1.day %>
+    <%= f.datetime_field :start_date %>
     <%= render 'public/error_field', resource: event, attribute: :start_date %>
   </div>
 
