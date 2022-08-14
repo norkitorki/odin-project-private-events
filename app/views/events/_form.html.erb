@@ -1,6 +1,9 @@
 <%= form_with model: event do |f| %>
   <div class="field">
-    <%= f.label :name, 'Name (100 characters maximum)' %>
+    <%= f.label :name do %>
+      Name
+      <em class="small">(100 characters maximum)</em>
+    <% end %>
     <%= f.text_field :name, autofocus: true, maxLength: 100 %>
     <%= render 'public/error_field', resource: event, attribute: :name %>
   </div>
