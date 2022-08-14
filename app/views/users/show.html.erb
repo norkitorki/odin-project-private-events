@@ -1,0 +1,13 @@
+<h3 class="heading bold">Hosted Events (<%= @user.events.size %>)</h3>
+<div class="events">
+  <% @user.events.each do |event| %>
+    <%= render 'events/event', event: event %>
+  <% end %>
+</div>
+
+<h3 class="heading bold">Visited Events (<%= @user.visits.size %>)</h3>
+<div class="events">
+  <% @user.visits.each do |event| %>
+    <%= render 'events/event', event: event %>
+  <% end %>
+</div>
