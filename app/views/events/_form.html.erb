@@ -1,33 +1,35 @@
 <%= form_with model: event do |f| %>
-  <%= render "devise/shared/error_messages", resource: event %>
-
   <div class="field">
-    <%= f.label :name %>
-    <em> (100 characters maximum)</em></br >
-    <%= f.text_field :name, maxLength: 100 %>
+    <%= f.label :name, 'Name (100 characters maximum)' %>
+    <%= f.text_field :name, autofocus: true, maxLength: 100 %>
+    <%= render 'public/error_field', resource: event, attribute: :name %>
   </div>
 
   <div class="field">
-    <%= f.label :description %></br >
-    <%= f.text_area :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: '5' %>
+    <%= render 'public/error_field', resource: event, attribute: :description %>
   </div>
 
   <div class="field">
-    <%= f.label :location %></br >
+    <%= f.label :location %>
     <%= f.text_field :location %>
+    <%= render 'public/error_field', resource: event, attribute: :location %>
   </div>
 
   <div class="field">
-    <%= f.label :start_date %></br >
-    <%= f.datetime_field :start_date, min: Date.today %>
+    <%= f.label :start_date %>
+    <%= f.datetime_field :start_date, min: Date.today - 1.day %>
+    <%= render 'public/error_field', resource: event, attribute: :start_date %>
   </div>
 
   <div class="field">
-    <%= f.label :end_date %></br >
-    <%= f.datetime_field :end_date, min: Date.today %>
+    <%= f.label :end_date %>
+    <%= f.datetime_field :end_date %>
+    <%= render 'public/error_field', resource: event, attribute: :end_date %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions align-self-center">
+    <%= f.submit class: 'bold' %>
   </div>
 <% end %>
