@@ -58,13 +58,13 @@ class EventsController < ApplicationController
     if action == 'Register'
       if !@event.attendees.include?(current_user)
         @event.attendees << current_user
-        notice = 'You successfully registered for an event.'
+        notice = 'You successfully registered for this event.'
       else
         notice = 'You are already registered for this event.'
       end
     else
       @event.attendees.delete(current_user.id)
-      notice = 'You successfully unregistered from an event.'
+      notice = 'You successfully unregistered from this event.'
     end
     redirect_to @event, notice: notice
   end
