@@ -11,12 +11,46 @@
   </head>
 
   <body class="flex column">
-        <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete } %>
-        <%= link_to 'Edit User', edit_user_registration_path %>
-      <% else %>
-        <%= link_to 'Sign Up', new_user_registration_path %>
-        <%= link_to 'Sign In', user_session_path %>
+    <header class="header flex gap-20 align-center">
+      <%= link_to root_path, class: 'main-heading' do %>
+        Private<span>Events</span>
       <% end %>
+
+      <nav class="navigation flex align-center justify-between">
+        <% if user_signed_in? %>
+          <%= link_to 'Create Event', new_event_path, class: 'bold' %>
+          <ul class="flex gap-20">
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <svg style="width:26px;height:26px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75M12,15C13.5,15 16.5,15.75 16.5,17.25V18H7.5V17.25C7.5,15.75 10.5,15 12,15Z" />
+                </svg>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <svg style="width:26px;height:26px" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M21.7,13.35L20.7,14.35L18.65,12.3L19.65,11.3C19.86,11.09 20.21,11.09 20.42,11.3L21.7,12.58C21.91,12.79 21.91,13.14 21.7,13.35M12,18.94L18.06,12.88L20.11,14.93L14.06,21H12V18.94M12,14C7.58,14 4,15.79 4,18V20H10V18.11L14,14.11C13.34,14.03 12.67,14 12,14M12,4A4,4 0 0,0 8,8A4,4 0 0,0 12,12A4,4 0 0,0 16,8A4,4 0 0,0 12,4Z" />
+                </svg>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+                <svg style="width:26px;height:26px;color:red" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" style="color:#960f0f;"/>
+                </svg>
+              <% end %>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="flex gap-20">
+            <li><%= link_to 'Sign Up', new_user_registration_path, class: 'bold' %></li>
+            <li><%= link_to 'Log In', new_user_session_path, class: 'bold' %></li>
+          </ul>
+        <% end %>
+      </nav>
     </header>
 
     <% if flash.any? %>
