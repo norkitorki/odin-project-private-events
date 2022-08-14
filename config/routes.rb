@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'user/show'
   devise_for :users
   resources :events
 
   root 'events#index'
+
+  get 'users/:id', to: 'users#show', as: :user
   get 'events/:id/attendees', to: 'events#attendees', as: :event_attendees
 end
