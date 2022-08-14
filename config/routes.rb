@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :events
 
   root 'events#index'
+  get 'events/:id/attendees', to: 'events#attendees', as: :event_attendees
 end
