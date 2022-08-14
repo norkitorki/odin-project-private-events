@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   before_action :set_event, except: %i[ index new create ]
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!, except: %i[ index show attendees ]
 
   def index
     @upcoming_events = Event.upcoming.includes(:host, :attendees).order('start_date')
-    @previous_events = Event.previous.includes(:host, :attendees).order('start_date')
+    @past_events     = Event.previous.includes(:host, :attendees).order('start_date')
   end
 
   def show

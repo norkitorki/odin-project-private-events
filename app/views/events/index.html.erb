@@ -6,11 +6,11 @@
   <% end %>
 </div>
 
-<% if @previous_events.any? %>
-  <h2 class="heading bold">Previous Events</h2>
+<% if @past_events.any? %>
+  <h2 class="heading bold">Past Events</h2>
 
   <div class="events previous-events flex gap-20">
-    <% @previous_events.each do |event| %>
+    <% @past_events.each do |event| %>
       <%= render 'event', event: event %>
     <% end %>
   </div>
