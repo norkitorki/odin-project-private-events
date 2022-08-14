@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     return add_or_remove_attendee(commit) if %w[ Register Unregister ].any?(commit)
 
     if @event.update(event_params)
-      redirect_to root_path, notice: 'Event has been successfully updated.'
+      redirect_to @event, notice: 'Event has been successfully updated.'
     else
       flash.now[:alert] = 'Event has not been updated.'
       render :edit, status: :unprocessable_entity
