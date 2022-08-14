@@ -28,9 +28,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.label :current_password %>
     <%= f.password_field :current_password, autocomplete: "current-password" %>
     <%= render 'public/error_field', resource: resource, attribute: :current_password %>
+    <i class="small">(we need your current password to confirm your changes)</i>
   </div>
 
   <div class="actions align-self-center">
