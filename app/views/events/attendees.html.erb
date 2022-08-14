@@ -1,0 +1,12 @@
+<h2 class="heading bold">Attendees for <%= @event.name %></h2>
+
+<ul class="flex column gap-10">
+  <% @event.attendees.each do |attendee| %>
+    <li class="flex gap-10">
+      <%= link_to(user_path(attendee), class: 'flex gap-10 align-center') do %>
+        <%= image_tag "https://source.unsplash.com/random/30x30?v=#{attendee.id}", size: '30x30', style: 'border-radius: 50%;' %>
+        <span class="bold small"><%= attendee.username %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
