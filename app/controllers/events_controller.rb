@@ -10,6 +10,9 @@ class EventsController < ApplicationController
   def show
   end
 
+  def attendees
+  end
+
   def edit
   end
 
