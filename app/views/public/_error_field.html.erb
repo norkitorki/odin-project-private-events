@@ -1,0 +1,9 @@
+<% if resource.errors[attribute].any? %>
+  <div class="error-field">
+    <ul class="flex column gap-5">
+      <% resource.errors.full_messages_for(attribute).each do |msg| %>
+        <li class="very-small"><p><%= msg %></p></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
