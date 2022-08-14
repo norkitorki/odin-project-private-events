@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  scope :upcoming, -> { where("start_date > ?", Time.now) }
+  scope :previous, -> { where("start_date < ?", Time.now) }
+
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, :location, :start_date, :end_date, presence: true
 
