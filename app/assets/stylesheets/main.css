@@ -150,11 +150,10 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
   overflow: hidden;
 }
 
-.event-attendees {
-  width: 100%;
-  padding: 10px;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
+.event-header {
+  display: grid;
+  grid-template-columns: 600px 370px;
+  border-bottom: 1px solid #cccccc83;
 }
 
 .event-registration input[type="submit"] {
