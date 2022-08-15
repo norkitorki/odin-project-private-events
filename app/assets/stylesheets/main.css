@@ -25,13 +25,31 @@ a:hover { text-decoration: underline; }
 
 .pad-20 { padding: 20px; }
 
-.flex { display: flex; }
+/* Header */
 
-.flex.column { flex-direction: column; }
+.header {
+  background-color: #615c5c48;
+  padding: 10px;
+}
 
-.flex.justify-between { justify-content: space-between; }
+.main-heading { font-size: 24px; }
 
-.flex.justify-evenly { justify-content: space-evenly; }
+.main-heading > span { color: #0ec2b3; }
+
+.navigation { width: 100%; }
+
+/* Flash */
+
+.flash-messages {
+  background-color: #000000b0;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.flash-messages .notice { color: #2a7c09; }
+
+.flash-messages .alert { color: #960f0f; }
+
 
 .flex.justify-end { justify-content: flex-end; }
 
