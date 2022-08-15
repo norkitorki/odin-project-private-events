@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  scope :upcoming, -> { where("start_date > ?", Time.now) }
-  scope :previous, -> { where("start_date < ?", Time.now) }
+  scope :upcoming, -> { where("start_date > ?", Time.now.utc) }
+  scope :previous, -> { where("start_date < ?", Time.now.utc) }
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, :location, :start_date, :end_date, presence: true
@@ -16,6 +16,10 @@ class Event < ApplicationRecord
     through: :event_visitors,
     source: :user,
     dependent: :destroy
+
+  def in_the_past?
+    start_date < Time.now.utc ? true : false
+  end
 
   private
 
