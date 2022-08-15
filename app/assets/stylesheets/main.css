@@ -1,10 +1,29 @@
-/* misc Rules */
+/* Misc*/
+
+* { color: #ffffff; }
+
+body { background-color: #1a2c36; }
+
+div, aside { word-wrap: break-word; }
+
+a { 
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover { text-decoration: underline; }
+
+.heading { font-size: 22px; }
+
+.very-small { font-size: 12px; }
+
+.small { font-size: 14px; }
 
 .bold { font-weight: bold; }
 
 .pad-10 { padding: 10px; }
 
-/* Flexbox Rules */
+.pad-20 { padding: 20px; }
 
 .flex { display: flex; }
 
