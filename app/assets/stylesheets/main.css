@@ -111,16 +111,28 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
 
 .cancel-account { color: #c70b1b; }
 
+/* events/index.html.erb */
 
-.align-self-center { align-self: center; }
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 402px);
+  gap: 20px;
+}
 
-.align-self-end { align-self: flex-end; }
+.event {
+  height: min(300px, max-content);
+  line-height: 20px;
+  border: 1px solid #7b818b2c;
+  transition: all .6s ease-in;
+}
 
-.flex.gap-5 { gap: 5px; }
+.previous-events .event { filter: blur(2px); }
 
-.flex.gap-10 { gap: 10px; }
+.event:hover { box-shadow: 1px 4px 10px #504b4b94; }
 
-.flex.gap-20 { gap: 20px; }
+.event .event-date { color: #1a9cf3; }
+
+.event .event-location, .event .event-author { max-width: 95%; }
 
 /* events/show.html.erb */
 
