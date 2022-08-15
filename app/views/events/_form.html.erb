@@ -20,17 +20,20 @@
     <%= render 'public/error_field', resource: event, attribute: :location %>
   </div>
 
-  <div class="field">
-    <%= f.label :start_date %>
-    <%= f.datetime_field :start_date %>
-    <%= render 'public/error_field', resource: event, attribute: :start_date %>
-  </div>
+  <% if event.new_record? || !event.in_the_past? %>
+    <div class="field">
+      <%= f.label :start_date %>
+      <%= f.datetime_field :start_date %>
+      <%= render 'public/error_field', resource: event, attribute: :start_date %>
+      <i class="small">(Date values are in UTC format)</i>
+    </div>
 
-  <div class="field">
-    <%= f.label :end_date %>
-    <%= f.datetime_field :end_date %>
-    <%= render 'public/error_field', resource: event, attribute: :end_date %>
-  </div>
+    <div class="field">
+      <%= f.label :end_date %>
+      <%= f.datetime_field :end_date %>
+      <%= render 'public/error_field', resource: event, attribute: :end_date %>
+    </div>
+  <% end %>
 
   <div class="actions align-self-center">
     <%= f.submit %>
