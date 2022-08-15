@@ -38,7 +38,7 @@
           <% end %>
         <% end %>
 
-        <% if @event.start_date < Time.now.utc %>
+        <% if @event.in_the_past? %>
           <span class="event-closed bold">Event registration is closed.</span>
         <% end %>
       </div>
