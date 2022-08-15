@@ -89,9 +89,9 @@
           <h3 class="bold">Date</h3>
           <p class="small">
             <% if @event.start_date.beginning_of_day == @event.end_date.beginning_of_day %>
-             <%= @event.start_date.strftime('%a %b %e %Y %H:%M - ') %><%= @event.end_date.strftime('%H:%M CEST') %>
+             <%= @event.start_date.strftime('%a %b %e %Y %H:%M - ') %><%= @event.end_date.strftime('%H:%M UTC') %>
             <% else %>
-              <%= @event.start_date.ctime %> -</br > <%= @event.end_date.ctime %> CEST
+              <%= @event.start_date.ctime %> -</br > <%= @event.end_date.ctime %> UTC
             <% end %>
           </p>
         </div>
