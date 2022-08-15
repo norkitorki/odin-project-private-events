@@ -50,14 +50,67 @@ a:hover { text-decoration: underline; }
 
 .flash-messages .alert { color: #960f0f; }
 
+/* Forms */
 
-.flex.justify-end { justify-content: flex-end; }
+form:not(.event-registration):not(.button_to) {
+  width: 380px;
+  color: #000000;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-.flex.align-center { align-items: center; }
+.field, .field_with_errors { width: 100%; }
 
-.justify-self-end { justify-self: flex-end; }
+.field label {
+  display: block;
+  font-weight: bold;
+}
 
-.align-self-start { align-self: flex-start; }
+.field > input:not([type="checkbox"]), 
+.field > textarea, 
+.field_with_errors input,
+.field_with_errors textarea {
+  width: 100%;
+  color: #000000;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.field input:not([type="checkbox"]) { height: 30px; }
+
+.field_with_errors input, 
+.field_with_errors textarea { 
+  border: 2px solid #6e0710; 
+  outline: none;
+}
+
+.error-field {
+  width: max-content;
+  background-color: #6e0710;
+  padding: 5px;
+  border-radius: 0 0 3px 3px;
+}
+
+.actions input[type="submit"], button {
+  color: #000000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 10px 4px 10px;
+  border: none;
+}
+
+form.button_to > button[type="submit"] {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+form.button_to > button[type="submit"]:hover { cursor: pointer; }
+
+.cancel-account { color: #c70b1b; }
+
 
 .align-self-center { align-self: center; }
 
