@@ -27,7 +27,6 @@
 
       <div class="flex column gap-10">
         <h1 class="heading bold"><%= @event.name %></h1>
-
         <p class="small">hosted by <%= link_to @event.host.username, user_path(@event.host), class: 'bold' %></p>
       </div>
 
