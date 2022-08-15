@@ -171,4 +171,29 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
   cursor: pointer;
 }
 
-.event-description { width: 75%; }
+.event-closed { color: #c70b1b; }
+
+.event-attendees {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #cccccc83;
+}
+
+.event-details { padding: 30px 40px 30px 40px; }
+
+.event-details .location, .event-details .date {
+  max-width: 200px; 
+  position: relative;
+  top: 4px;
+}
+
+.event-details .location > p, .event-details .date > p { line-height: 140%; }
+
+.event-description { max-width: 65%; }
+
+.event-description > p {
+  line-height: 150%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
