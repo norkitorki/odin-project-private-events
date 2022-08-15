@@ -197,3 +197,9 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
   white-space: pre-wrap;
 }
 
+/* users/show.html.erb */
+
+.user-card { 
+  border: 2px solid #c9c2c2; 
+  border-radius: 4px;
+}
