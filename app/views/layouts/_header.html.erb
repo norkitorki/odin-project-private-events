@@ -3,9 +3,13 @@
     Private<span>Events</span>
   <% end %>
 
-  <nav class="navigation flex align-center justify-between">
+  <nav class="navigation flex justify-between">
     <% if user_signed_in? %>
-      <%= link_to 'Create Event', new_event_path, class: 'bold' %>
+      <ul class="flex gap-20 align-center">
+        <li><%= render 'search/form' %></li>
+        <li><%= link_to 'Create Event', new_event_path, class: 'bold' %></li>
+      </ul>
+
       <ul class="flex gap-20 align-center">
         <li>
           <%= link_to user_path(current_user) do %>
@@ -32,7 +36,8 @@
         </li>
       </ul>
     <% else %>
-      <ul class="flex gap-20">
+      <ul class="flex gap-20 align-center">
+        <li><%= render 'search/form' %></li>
         <li><%= link_to 'Sign Up', new_user_registration_path, class: 'bold' %></li>
         <li><%= link_to 'Log In', new_user_session_path, class: 'bold' %></li>
       </ul>
