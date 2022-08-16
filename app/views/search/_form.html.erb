@@ -1,0 +1,5 @@
+<%= form_with(url: search_path, method: :get, class: 'search-form') do |f| %>
+  <div class="search">
+    <%= f.text_field :s, placeholder: 'Search' %>
+  </div>
+<% end %>
