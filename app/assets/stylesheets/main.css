@@ -52,7 +52,7 @@ a:hover { text-decoration: underline; }
 
 /* Forms */
 
-form:not(.event-registration):not(.button_to) {
+form:not(.event-registration):not(.button_to):not(.search-form) {
   width: 380px;
   color: #000000;
   align-self: center;
@@ -76,6 +76,15 @@ form:not(.event-registration):not(.button_to) {
   color: #000000;
   padding: 4px;
   margin-top: 10px;
+}
+
+.search input {
+  background-color: #615c5c48;
+  font-size: 16px;
+  border: 1px solid #ffffff18;
+  padding: 5px;
+  margin: 0;
+  outline: none;
 }
 
 .field input:not([type="checkbox"]) { height: 30px; }
