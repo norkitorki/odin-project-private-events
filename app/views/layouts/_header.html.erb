@@ -1,16 +1,15 @@
-<header class="header flex gap-20 align-center">
+<header class="header flex gap-20 align-center justify-between">
   <%= link_to root_path, class: 'main-heading' do %>
     Private<span>Events</span>
   <% end %>
 
-  <nav class="navigation flex justify-between">
-    <% if user_signed_in? %>
-      <ul class="flex gap-20 align-center">
-        <li><%= render 'search/form' %></li>
-        <li><%= link_to 'Create Event', new_event_path, class: 'bold' %></li>
-      </ul>
+  <%= render 'search/form' %>
 
-      <ul class="flex gap-20 align-center">
+  <nav class="navigation flex">
+    <ul class="flex gap-20 align-center">
+      <li><%= link_to 'Create Event', new_event_path, class: 'bold' %></li>
+
+      <% if user_signed_in? %>
         <li>
           <%= link_to user_path(current_user) do %>
             <svg style="width:26px;height:26px" viewBox="0 0 24 24">
@@ -34,13 +33,10 @@
             </svg>
           <% end %>
         </li>
-      </ul>
-    <% else %>
-      <ul class="flex gap-20 align-center">
-        <li><%= render 'search/form' %></li>
+      <% else %>
         <li><%= link_to 'Sign Up', new_user_registration_path, class: 'bold' %></li>
         <li><%= link_to 'Log In', new_user_session_path, class: 'bold' %></li>
-      </ul>
-    <% end %>
+      <% end %>
+    </ul>
   </nav>
 </header>
