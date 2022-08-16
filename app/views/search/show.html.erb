@@ -1,0 +1,28 @@
+<h2 class="heading bold">Results for '<%= @search_term %>'</h2>
+
+<h3 class="bold">Event matches</h3>
+<div class="events">
+  <% if @events.any? %>
+    <% @events.each do |event| %>
+      <%= render 'events/event', event: event %>
+    <% end %>
+  <% else %>
+    <em class="small">no matches</em>
+  <% end %>
+</div>
+
+<h3 class="bold">User matches</h3>
+<div class="flex column gap-10">
+  <% if @users.any? %>
+    <% @users.each do |user| %>
+      <div>
+        <%= link_to user, class: 'flex gap-10 align-center' do %>
+          <%= image_tag "https://source.unsplash.com/random/30x30?v=#{user.id}", size: '30x30', style: 'border-radius: 50%;' %>
+          <span><%= user.username %></span>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <em class="small">no matches</em>
+  <% end %>
+</div>
