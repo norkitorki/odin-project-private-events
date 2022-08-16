@@ -6,7 +6,7 @@ body { background-color: #1a2c36; }
 
 div, aside { word-wrap: break-word; }
 
-a { 
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -68,8 +68,8 @@ form:not(.event-registration):not(.button_to):not(.search-form) {
   font-weight: bold;
 }
 
-.field > input:not([type="checkbox"]), 
-.field > textarea, 
+.field > input:not([type="checkbox"]),
+.field > textarea,
 .field_with_errors input,
 .field_with_errors textarea {
   width: 100%;
@@ -89,9 +89,9 @@ form:not(.event-registration):not(.button_to):not(.search-form) {
 
 .field input:not([type="checkbox"]) { height: 30px; }
 
-.field_with_errors input, 
-.field_with_errors textarea { 
-  border: 2px solid #6e0710; 
+.field_with_errors input,
+.field_with_errors textarea {
+  border: 2px solid #6e0710;
   outline: none;
 }
 
@@ -191,7 +191,7 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
 .event-details { padding: 30px 40px 30px 40px; }
 
 .event-details .location, .event-details .date {
-  max-width: 200px; 
+  max-width: 200px;
   position: relative;
   top: 4px;
 }
@@ -208,7 +208,7 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
 
 /* users/show.html.erb */
 
-.user-card { 
-  border: 2px solid #c9c2c2; 
+.user-card {
+  border: 2px solid #c9c2c2;
   border-radius: 4px;
 }
