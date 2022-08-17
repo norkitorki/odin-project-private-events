@@ -1,17 +1,13 @@
 <h2 class="heading bold">Upcoming Events</h2>
 
 <div class="events">
-  <% @upcoming_events.each do |event| %>
-    <%= render 'event', event: event %>
-  <% end %>
+  <%= render @upcoming_events %>
 </div>
 
 <% if @past_events.any? %>
   <h2 class="heading bold">Past Events</h2>
 
   <div class="events previous-events flex gap-20">
-    <% @past_events.each do |event| %>
-      <%= render 'event', event: event %>
-    <% end %>
+    <%= render @past_events %>
   </div>
 <% end %>
