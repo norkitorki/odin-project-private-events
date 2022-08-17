@@ -4,11 +4,16 @@
 </div>
 
 <h3 class="heading bold">Hosted Events (<%= @user.events.size %>)</h3>
+
+<span class="bold">Upcoming Events</span>
 <div class="events">
-  <% @user.events.each do |event| %>
-    <%= render 'events/event', event: event %>
-  <% end %>
+  <%= render @user.events.upcoming %>
 </div>
+
+<span class="bold">Past Events</span>
+<div class="events">
+  <%= render @user.events.previous %>
+</div class="events">
 
 <h3 class="heading bold">Visited Events (<%= @user.visits.size %>)</h3>
 <div class="events">
