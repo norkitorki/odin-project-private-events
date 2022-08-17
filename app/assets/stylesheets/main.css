@@ -41,7 +41,6 @@ a:hover { text-decoration: underline; }
 .flash-messages {
   background-color: #000000b0;
   border-radius: 5px;
-  margin-top: 20px;
 }
 
 .flash-messages .notice { color: #2a7c09; }

@@ -13,17 +13,17 @@
   <body class="flex column">
     <%= render 'layouts/header' %>
 
-    <% if flash.any? %>
-      <div class="flash-messages pad-10 align-self-center">
-        <% flash.each do |type, msg| %>
-          <% if %w[ alert notice ].include?(type) %>
-            <p class="<%= type %>"><%= msg %></p>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-
     <main class="pad-20 flex column gap-20">
+      <% if flash.any? %>
+        <div class="flash-messages pad-10 align-self-center">
+          <% flash.each do |type, msg| %>
+            <% if %w[ alert notice ].include?(type) %>
+              <p class="<%= type %>"><%= msg %></p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
