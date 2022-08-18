@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, except: %i[ index new create ]
   before_action :authenticate_user!, except: %i[ index show attendees ]
+  before_action :restrict_access_to_host, only: %i[ edit update destroy ]
 
   def index
     @upcoming_events = Event.upcoming.includes(:host, :attendees).order('start_date')
@@ -55,6 +56,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def restrict_access_to_host
+    (redirect_to @event, notice: 'You are not allowed to view this page.') if @event.host != current_user
   end
 
   def add_or_remove_attendee(action)
