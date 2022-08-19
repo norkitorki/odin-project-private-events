@@ -1,0 +1,13 @@
+<h2 class="heading bold">You have been invited to the following events</h2>
+
+<ul class="flex column gap-10">
+  <% @user.invitations.each do |invitation| %>
+    <li>
+      <span><%= link_to invitation.event.name, invitation.event, class: 'bold' %></span>
+      <%= form_with model: [invitation.event, invitation], html: { method: :delete }, data: { turbo: false } do |f| %>
+        <%= f.submit 'Accept' %>
+        <%= f.submit 'Decline' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
