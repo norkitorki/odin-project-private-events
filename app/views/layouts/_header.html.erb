@@ -10,6 +10,16 @@
       <li><%= link_to 'Create Event', new_event_path, class: 'bold' %></li>
 
       <% if user_signed_in? %>
+        <% if current_user.invitations.any? %>
+          <li>
+            <%= link_to user_invitations_path(current_user) do %>
+              <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+              </svg>
+            <% end %>
+          </li>
+        <% end %>
+
         <li>
           <%= link_to user_path(current_user) do %>
             <svg style="width:26px;height:26px" viewBox="0 0 24 24">
