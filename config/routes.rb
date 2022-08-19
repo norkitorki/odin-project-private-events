@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :events
-
+  resources :users, only: :show do 
+    get 'invitations', to: 'users#invitations'
+  end
+  
   root 'events#index'
 
   get 'users/:id', to: 'users#show', as: :user
