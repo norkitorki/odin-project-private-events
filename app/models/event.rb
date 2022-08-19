@@ -17,6 +17,12 @@ class Event < ApplicationRecord
     source: :user,
     dependent: :destroy
 
+  has_many :event_invitations
+  has_many :invited_users,
+    through: :event_invitations,
+    source: :user,
+    dependent: :destroy
+
   def in_the_past?
     start_date < Time.now.utc ? true : false
   end
