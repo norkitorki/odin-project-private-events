@@ -15,7 +15,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_052106) do
   enable_extension "plpgsql"
 
   create_table "event_invitations", force: :cascade do |t|
-    t.integer "status", default: 0
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_event_invitations_on_event_id"
