@@ -12,4 +12,6 @@ class User < ApplicationRecord
     through: :event_visitors, 
     source: :event, 
     dependent: :destroy
+  
+  has_many :invitations, class_name: 'EventInvitation', inverse_of: :user
 end
