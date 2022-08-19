@@ -1,0 +1,12 @@
+<h2 class="heading bold align-self-center">Invite users for <%= @event.name %></h2>
+
+<%= form_with model: [@event, @invitation] do |f| %>
+  <div class="field">
+    <%= f.label :name_or_email, 'Username or email address' %>
+    <%= f.text_field :name_or_email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Invite' %>
+  </div>
+<% end %>
