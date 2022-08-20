@@ -1,11 +1,6 @@
 class EventInvitationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, except: %i[ show update ]
-
-  def show
-    @user = User.find(params[:id])
-    @invitations = @user.invitations.pending.includes(:event)
-  end
+  before_action :set_event, except: %i[ update ]
   
   def new
     @invitation = EventInvitation.new
