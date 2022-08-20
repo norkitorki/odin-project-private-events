@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, except: %i[ index new create ]
-  before_action :authenticate_user!, except: %i[ index show attendees ]
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :restrict_access_to_host, only: %i[ edit update destroy ]
 
   def index
@@ -9,9 +9,6 @@ class EventsController < ApplicationController
   end
 
   def show
-  end
-
-  def attendees
   end
 
   def edit
@@ -32,9 +29,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    commit = params[:commit]
-    return add_or_remove_attendee(commit) if %w[ Register Unregister ].any?(commit)
-
     if @event.update(event_params)
       redirect_to @event, notice: 'Event has been successfully updated.'
     else
@@ -60,20 +54,5 @@ class EventsController < ApplicationController
 
   def restrict_access_to_host
     (redirect_to @event, notice: 'You are not allowed to view this page.') if @event.host != current_user
-  end
-
-  def add_or_remove_attendee(action)
-    if action == 'Register'
-      if !@event.attendees.include?(current_user)
-        @event.attendees << current_user
-        notice = 'You successfully registered for this event.'
-      else
-        notice = 'You are already registered for this event.'
-      end
-    else
-      @event.attendees.delete(current_user.id)
-      notice = 'You successfully unregistered from this event.'
-    end
-    redirect_to @event, notice: notice
   end
 end
