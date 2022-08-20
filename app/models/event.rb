@@ -28,6 +28,10 @@ class Event < ApplicationRecord
     start_date < Time.now.utc ? true : false
   end
 
+  def private?
+    private == 1
+  end
+
   private
 
   def validate_event_dates
