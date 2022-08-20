@@ -4,6 +4,7 @@ class Event < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :description, :location, :start_date, :end_date, presence: true
+  validates :private, comparison: { greater_than: -1, less_than: 2 }
 
   validate :validate_event_dates
 
