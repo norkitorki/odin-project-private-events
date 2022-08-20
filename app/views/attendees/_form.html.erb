@@ -1,0 +1,3 @@
+<%= form_with url: event_attendees_path(event), html: { method: event.attendees.include?(current_user) ? :delete : :post }, data: { turbo_method: false }, class: 'event-registration' do |f| %>
+  <%= f.submit (event.attendees.include?(current_user) ? 'Unregister' : 'Register') %>
+<% end %>
