@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: :show do 
-    get 'invitations', to: 'users#invitations'
-  end
+  resources :users, only: :show
   
   resources :events do
     resources :event_invitations, except: %i[ index edit update ]
@@ -13,5 +11,6 @@ Rails.application.routes.draw do
   
   root 'events#index'
 
+  get 'user/invitations', to: 'users#invitations', as: :user_invitations
   get 'search/', to: 'search#show', as: :search
 end
