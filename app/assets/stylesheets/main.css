@@ -177,7 +177,7 @@ form.button_to > button[type="submit"]:hover { cursor: pointer; }
   cursor: pointer;
 }
 
-.event-closed { color: #c70b1b; }
+.event-notice { color: #c70b1b; }
 
 .event-attendees {
   width: 100%;
