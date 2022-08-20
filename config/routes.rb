@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   
   resources :events do
     resources :event_invitations, except: %i[ index edit update ]
-    resources 'attendees', only: %i[ index create ]
-    delete 'attendees', to: 'attendees#destroy'
+    resources :attendees, only: %i[ index create ]
+    delete :attendees, to: 'attendees#destroy'
   end
   
   root 'events#index'
