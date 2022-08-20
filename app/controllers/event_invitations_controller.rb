@@ -18,7 +18,7 @@ class EventInvitationsController < ApplicationController
     
     if @invitation.valid? && user_inviteable?
       @invitation.save
-      redirect_to new_event_event_invitation_path, notice: "#{@user.username} has been invited."
+      redirect_to new_event_invitation_path, notice: "#{@user.username} has been invited."
     else
       flash.now[:alert] = "User cannot be invited."
       render :new, status: :unprocessable_entity
