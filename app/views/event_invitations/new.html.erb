@@ -3,7 +3,7 @@
 <%= form_with model: @event.event_invitations.new do |f| %>
   <div class="field">
     <%= f.label :name_or_email, 'Username or email address' %>
-    <%= f.text_field :name_or_email %>
+    <%= f.text_field :name_or_email, autofocus: true %>
   </div>
 
   <div class="actions">
