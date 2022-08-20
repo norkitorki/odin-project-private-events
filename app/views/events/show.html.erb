@@ -38,9 +38,7 @@
 
       <div>
         <% if user_signed_in? && current_user != @event.host && @event.start_date > Time.now.utc %>
-          <%= form_with model: @event, class: 'event-registration' do |f| %>
-            <%= f.submit (@event.attendees.include?(current_user) ? 'Unregister' : 'Register') %>
-          <% end %>
+          <%= render 'attendees/form', event: @event %>
         <% end %>
 
         <% if @event.in_the_past? %>
