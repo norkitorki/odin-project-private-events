@@ -37,8 +37,12 @@
       </div>
 
       <div>
-        <% if user_signed_in? && current_user != @event.host && @event.start_date > Time.now.utc %>
+        <% if user_signed_in? && current_user != @event.host && !@event.in_the_past? && !@event.private? %>
           <%= render 'attendees/form', event: @event %>
+        <% end %>
+
+        <% if @event.private? %>
+          <span class="event-notice bold">Private Event</span>
         <% end %>
 
         <% if @event.in_the_past? %>
