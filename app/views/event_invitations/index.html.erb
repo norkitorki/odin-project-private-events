@@ -1,0 +1,16 @@
+<h2 class="heading bold">Pending invitations for <%= @event.name %></h2>
+
+<ul class="flex column gap-20">
+  <% @event.invited_users.each do |user| %>
+    <li class="flex gap-10 align-center">
+      <%= link_to user.username, user, class: 'bold' %>
+      <%= form_with url: event_invitation_path(@event, EventInvitation.find_by(user_id: user.id, event_id: @event.id)), html: { method: :delete }, data: { turbo: false } do |f| %>
+        <div class="actions">
+          <%= f.submit 'Revoke Invitation', class: 'revoke-invitation-btn' %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Invite user', new_event_invitation_path(@event), class: 'small bold' %>
