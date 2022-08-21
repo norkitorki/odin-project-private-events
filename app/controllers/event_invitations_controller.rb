@@ -1,6 +1,10 @@
 class EventInvitationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event
+
+  def index
+    @invited_users = @event.invited_users
+  end
   
   def new
     @invitation = EventInvitation.new
