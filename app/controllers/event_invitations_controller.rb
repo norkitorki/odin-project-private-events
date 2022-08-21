@@ -35,7 +35,8 @@ class EventInvitationsController < ApplicationController
       notice = 'You have rejected the invitation.'
     end
     @invitation.destroy
-    redirect_to user_invitations_path(@invitation.user), notice: notice
+    path = params[:commit] == 'Revoke Invitation' ? event_invitations_path(@event) : user_invitations_path(@invitation.user)
+    redirect_to path, notice: notice
   end
 
   private
@@ -51,5 +52,5 @@ class EventInvitationsController < ApplicationController
   def user_inviteable?
     @event.host != @user &&
       %i[ attendees invited_users ].none? { |m| @event.send(m).include?(@user) }
-  end 
+  end
 end
