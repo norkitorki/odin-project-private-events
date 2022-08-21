@@ -10,8 +10,6 @@ class EventInvitationsController < ApplicationController
     @invitation = @event.event_invitations.new
   end
 
-  end
-
   def create
     @invitation = @event.event_invitations.new
     @user = find_user(params[:event_invitation][:name_or_email])
