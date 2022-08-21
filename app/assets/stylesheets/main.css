@@ -107,6 +107,8 @@ form:not(.event-registration):not(.button_to):not(.search-form) {
   border: none;
 }
 
+.actions input.revoke-invitation-btn { font-size: 12px; }
+
 form.button_to > button[type="submit"] {
   border: none;
   background: none;
