@@ -1,6 +1,6 @@
 class EventInvitationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, except: %i[ update ]
+  before_action :set_event
   
   def new
     @invitation = EventInvitation.new
