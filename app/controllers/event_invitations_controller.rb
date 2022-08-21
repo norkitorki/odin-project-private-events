@@ -7,7 +7,9 @@ class EventInvitationsController < ApplicationController
   end
   
   def new
-    @invitation = EventInvitation.new
+    @invitation = @event.event_invitations.new
+  end
+
   end
 
   def create
